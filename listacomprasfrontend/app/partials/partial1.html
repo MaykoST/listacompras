@@ -1,0 +1,12 @@
+<div>
+    <ul>
+        <li ng-repeat="lista in todaslistas">
+            {{lista.descricao}} / {{lista.data}} 
+        </li> 
+    </ul>
+</div>
+<!--<a ng-click="inserir()" class="btn btn-small btn-primary">Clique para Inserir</a>-->
+<div ng-controller="ModalDemoCtrl">
+    <button class="btn btn-default" ng-click="open()">Open me!</button>
+    <div ng-show="selected">Selection from a modal: {{ selected }}</div>
+</div>
