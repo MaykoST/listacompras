@@ -13,7 +13,7 @@ import javax.ws.rs.core.Application;
  *
  * @author Mayko
  */
-@javax.ws.rs.ApplicationPath("webresources")
+@javax.ws.rs.ApplicationPath("rest")
 public class ApplicationConfig extends Application {
 
     @Override
@@ -30,6 +30,7 @@ public class ApplicationConfig extends Application {
      * If required, comment out calling this method in getClasses().
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
+        resources.add(br.listacompras.service.CORSFilter.class);
         resources.add(br.listacompras.service.ListaComprasDetailFacadeREST.class);
         resources.add(br.listacompras.service.ListaComprasMasterFacadeREST.class);
     }

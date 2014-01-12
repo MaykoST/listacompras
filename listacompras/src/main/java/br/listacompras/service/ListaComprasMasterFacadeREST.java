@@ -25,7 +25,7 @@ import javax.ws.rs.Produces;
  * @author Mayko
  */
 @Stateless
-@Path("br.listacompras.listacomprasmaster")
+@Path("listacomprasmaster")
 public class ListaComprasMasterFacadeREST extends AbstractFacade<ListaComprasMaster> {
     @PersistenceContext(unitName = "br.listacompras_listacompras_war_1.0-SNAPSHOTPU")
     private EntityManager em;
