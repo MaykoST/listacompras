@@ -3,6 +3,7 @@
   <persistence-unit name="br.listacompras_listacompras_war_1.0-SNAPSHOTPU" transaction-type="JTA">
     <jta-data-source>listacompras</jta-data-source>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
-    <properties/>
+    <properties>        
+    </properties>
   </persistence-unit>
 </persistence>

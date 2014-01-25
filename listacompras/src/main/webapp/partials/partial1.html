@@ -1,14 +1,12 @@
 <div>
-    <div>
-        <ul>
-            <li ng-repeat="lista in todaslistas">
-                <span>{{lista.descricao}} / {{lista.data}}</span>
-                <span><button class="btn btn-default" ng-click="open(lista)">Editar</button></span>
-                <span><button class="btn btn-default" ng-click="excluir(lista)">Excluir</button></span>
-            </li> 
-        </ul>
-    </div>
-    <!--<a ng-click="inserir()" class="btn btn-small btn-primary">Clique para Inserir</a>-->
+    <ul>
+        <li ng-repeat="lista in todaslistas" ng-click="select(lista)">
+            <div>{{lista.desc_item}}</div>
+            <div collapse="cur_item.id != lista.id">
+                {{lista.desc_item}}
+            </div>
+        </li>
+    </ul>    
     <div>
         <button class="btn btn-default" ng-click="open(null)">Inserir</button>    
     </div>

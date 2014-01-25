@@ -6,7 +6,7 @@
 
 package br.listacompras.service;
 
-import br.listacompras.model.ListaComprasMaster;
+import br.listacompras.model.Lista;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -19,33 +19,47 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.WebApplicationException;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
 
 /**
  *
  * @author Mayko
  */
 @Stateless
-@Path("listacomprasmaster")
-public class ListaComprasMasterFacadeREST extends AbstractFacade<ListaComprasMaster> {
+@Path("lista")
+public class ListaFacadeREST extends AbstractFacade<Lista> {
     @PersistenceContext(unitName = "br.listacompras_listacompras_war_1.0-SNAPSHOTPU")
     private EntityManager em;
 
-    public ListaComprasMasterFacadeREST() {
-        super(ListaComprasMaster.class);
+    public ListaFacadeREST() {
+        super(Lista.class);
     }
 
     @POST
     @Override
     @Consumes({"application/xml", "application/json"})
-    public void create(ListaComprasMaster entity) {
+    @Produces({"application/xml", "application/json"})
+    public Lista create(Lista entity) {
         super.create(entity);
+        
+        return entity;
     }
 
     @PUT
     @Path("{id}")
     @Consumes({"application/xml", "application/json"})
-    public void edit(@PathParam("id") Integer id, ListaComprasMaster entity) {
-        super.edit(entity);
+    public void edit(@PathParam("id") Integer id, Lista entity) {
+        //Verifica a existencia do item senão retorna erro
+        if (super.find(id) == null) {            
+            throw new WebApplicationException(Status.NOT_FOUND);
+            //return Response.status(Status.NOT_FOUND).build();
+        } else {
+            super.edit(entity);
+            
+            //return Response.noContent().build();
+        }
     }
 
     @DELETE
@@ -57,21 +71,21 @@ public class ListaComprasMasterFacadeREST extends AbstractFacade<ListaComprasMas
     @GET
     @Path("{id}")
     @Produces({"application/xml", "application/json"})
-    public ListaComprasMaster find(@PathParam("id") Integer id) {
+    public Lista find(@PathParam("id") Integer id) {
         return super.find(id);
     }
 
     @GET
     @Override
     @Produces({"application/xml", "application/json"})
-    public List<ListaComprasMaster> findAll() {
+    public List<Lista> findAll() {
         return super.findAll();
     }
 
     @GET
     @Path("{from}/{to}")
     @Produces({"application/xml", "application/json"})
-    public List<ListaComprasMaster> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
+    public List<Lista> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
         return super.findRange(new int[]{from, to});
     }
 
