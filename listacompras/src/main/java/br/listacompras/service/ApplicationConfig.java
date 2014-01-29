@@ -19,7 +19,9 @@ public class ApplicationConfig extends Application {
     @Override
     public Set<Class<?>> getClasses() {
         Set<Class<?>> resources = new java.util.HashSet<>();
-        addRestResourceClasses(resources);
+        
+        addRestResourceClasses(resources);                  
+        
         return resources;
     }
 
@@ -30,8 +32,6 @@ public class ApplicationConfig extends Application {
      * If required, comment out calling this method in getClasses().
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
-        resources.add(br.listacompras.service.CORSFilter.class);
-        resources.add(br.listacompras.service.ListaFacadeREST.class);        
     }
     
 }

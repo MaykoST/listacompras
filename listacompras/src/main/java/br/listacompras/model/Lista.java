@@ -21,6 +21,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlSchemaType;
 
 /**
  *
@@ -36,6 +37,12 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Lista.findByUserId", query = "SELECT l FROM Lista l WHERE l.userId = :userId"),
     @NamedQuery(name = "Lista.findByValorItem", query = "SELECT l FROM Lista l WHERE l.valorItem = :valorItem")})
 public class Lista implements Serializable {
+    @Column(name = "comprado")
+    private Boolean comprado;
+    @Lob
+    @Size(max = 2147483647)
+    @Column(name = "img_item")
+    private String imgItem;
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -52,11 +59,10 @@ public class Lista implements Serializable {
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "valor_item")
     private BigDecimal valorItem;
-    @Lob
-    @Column(name = "img_item")
-    private byte[] imgItem;
-    @Column(name = "comprado", nullable = false)
-    private boolean comprado;    
+    @Basic(optional = true)    
+    @Size(max = 1000)
+    @Column(name = "tags_item")
+    private String tagsItem;
 
     
     public Lista() {
@@ -101,23 +107,7 @@ public class Lista implements Serializable {
 
     public void setValorItem(BigDecimal valorItem) {
         this.valorItem = valorItem;
-    }
-
-    public byte[] getImgItem() {
-        return imgItem;
-    }
-
-    public void setImgItem(byte[] imgItem) {
-        this.imgItem = imgItem;
-    }
-    
-    public boolean isComprado() {
-        return comprado;
-    }
-
-    public void setComprado(boolean comprado) {
-        this.comprado = comprado;
-    }
+    }  
 
     @Override
     public int hashCode() {
@@ -143,5 +133,28 @@ public class Lista implements Serializable {
     public String toString() {
         return "br.listacompras.model.Lista[ id=" + id + " ]";
     }
-    
+
+    public Boolean getComprado() {
+        return comprado;
+    }
+
+    public void setComprado(Boolean comprado) {
+        this.comprado = comprado;
+    }
+
+    public String getImgItem() {
+        return imgItem;
+    }
+
+    public void setImgItem(String imgItem) {
+        this.imgItem = imgItem;
+    }
+
+    public String getTagsItem() {
+        return tagsItem;
+    }
+
+    public void setTagsItem(String tagsItem) {
+        this.tagsItem = tagsItem;
+    }            
 }

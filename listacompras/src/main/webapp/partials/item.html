@@ -1,0 +1,28 @@
+
+<form ui class="form-horizontal autoModal" style="margin: 0;" ng-submit="ok()"> 
+    <div class="modal-header custommodal" style="background: #be697a;">
+        <h1>Inserir Item</h1>
+    </div>
+    <div class="modal-body" style="background: #bbdadc;">
+        <div class="row">
+            <span class="label" >Descrição: </span>            
+            <span class="formw"><input tabindex = "1" type="text" id="descitem" ng-model="itemAtual.descItem"/></span>
+        </div>
+        <div class="row">
+            <span class="label">Valor: </span>
+            <span class="formw"><input tabindex="2" type="number" id="valoritem" step="0.01" ng-model="itemAtual.valorItem"/></span>
+        </div>
+        <div class="row">
+            <span class="label">Marcadores: </span>
+            <span class="formw"><input tabindex="3" type="text" id="tagsitem" ng-model="itemAtual.tagsItem"/></span>
+        </div>
+        <div class="row">
+            <span class="label">Imagem: </span>
+            <span class="formw"><input tabindex="4" type="file" id="imgitem" fileread="itemAtual.imgItem" accept="image/*"/></span>
+        </div>    
+    </div>
+    <div class="modal-footer" style="margin-top: 0px; background: #be697a;">
+        <input type="submit" class="btn btn-primary" value="OK"/>
+        <button class="btn btn-danger" ng-click="cancel()">Cancelar</button>    
+    </div>
+</form>

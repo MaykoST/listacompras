@@ -25,6 +25,14 @@ form {
     margin: 0 0 20px;
 }
 
+.botao-foto {
+    vertical-align: middle;
+    line-height: 65px;
+    width: 15%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
 .btn-large {
     padding: 11px 19px;
     font-size: 17.5px;
@@ -43,8 +51,8 @@ form {
 
 .container {
     width: 530px;
-    margin-top: 50px;
-    margin-bottom: 50px;
+    margin-top: 25px;
+    margin-bottom: 25px;
     font-family: 'Open Sans', sans-serif;
     -webkit-box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, .3);
     box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, .3);
@@ -55,7 +63,7 @@ form {
     width: 100%;
     padding-left: 30px;
     margin: 0;
-    font-size: 36px;
+    font-size: 32px;
     font-weight: 700;
     line-height: 80px;
     color: #fff;
@@ -64,31 +72,47 @@ form {
 .container .main {
     position: relative;
     background: #bbdadc;
-    padding: 18px 18px 110px 18px;
-    min-height: 510px;
+    padding: 18px 10px 10px 10px;
+    min-height: 510px;   
 }
 
 .container .main li label {
-    display: block;
+    display: inline-block;
     background: #eef6f7;
     margin-top: 5px;
     font-weight: 700;
-    font-size: 36px;
+    font-size: 25px;
     line-height: 80px;
     border: 1px solid #98ced1;
     -webkit-border-radius: 10px;
     border-radius: 10px;
     color: #5f6565;
+    width: 100%;
 }
 
 .container .main form {
     position: absolute;
     bottom: 0;
-    width: 494px;
+    width: 505px;        
 }
 
-.container .main form input {
-    width: 100%;
+.container .main form input[type="text"] {
+    width: 70%;
+}
+
+.container .main form input[type="number"] {
+    width: 29%;
+}
+
+.container .main form input[type="file"] {
+    width: 70%;
+}
+
+.container .main form input[type="submit"] {
+    width: 29%;
+}
+
+.container .main form input {    
     height: 78px;
     display: inline-block;
     background: #eef6f7;
@@ -152,29 +176,51 @@ label.comprado > span {
 }
 
 input::-webkit-input-placeholder {
-   color: #c3d3d4;
+    color: #c3d3d4;
 }
 
 input:-moz-placeholder { /* Firefox 18- */
-   color: #c3d3d4;  
+    color: #c3d3d4;  
 }
- 
+
 input::-moz-placeholder {  /* Firefox 19+ */
-   color: #c3d3d4;  
+    color: #c3d3d4;  
 }
- 
+
 input:-ms-input-placeholder {  
-   color: #c3d3d4;  
+    color: #c3d3d4;  
 }
 
+div.row {
+    font-family: 'Open Sans', sans-serif;
+    clear: both;
+    padding-top: 10px;
+}
+div.row span.label {
+    float: left;
+    width: 20%;
+    text-align: right;
+    vertical-align: middle;
+    padding-top: 10px;
+    color: black;
+}
+div.row span.formw {
+    float: right;
+    width: 80%;
+    text-align: left;
+    vertical-align: middle;
+}
+div.row span.formw input {
+    width: 96%;    
+}
 
-
-
-
-
-
-
-
-
-
-
+.custommodal h1 {
+    background: #be697a;
+    width: 100%;
+    padding-left: 30px;
+    margin: 0;
+    font-size: 26px;
+    font-weight: 700;    
+    color: #fff;
+    line-height: 50px;
+}

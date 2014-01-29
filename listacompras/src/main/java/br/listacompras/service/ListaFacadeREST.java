@@ -19,9 +19,6 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.WebApplicationException;
-import javax.ws.rs.core.Response;
-import javax.ws.rs.core.Response.Status;
 
 /**
  *
@@ -51,15 +48,7 @@ public class ListaFacadeREST extends AbstractFacade<Lista> {
     @Path("{id}")
     @Consumes({"application/xml", "application/json"})
     public void edit(@PathParam("id") Integer id, Lista entity) {
-        //Verifica a existencia do item senão retorna erro
-        if (super.find(id) == null) {            
-            throw new WebApplicationException(Status.NOT_FOUND);
-            //return Response.status(Status.NOT_FOUND).build();
-        } else {
-            super.edit(entity);
-            
-            //return Response.noContent().build();
-        }
+        super.edit(entity);
     }
 
     @DELETE

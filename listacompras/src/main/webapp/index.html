@@ -1,47 +1,57 @@
 <!doctype html>
 <html lang="en" ng-app="myApp">  
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, user-scalable=yes">
-  <title>Lista Compras</title>  
-  <link rel="stylesheet" href="css/bootstrap.css"/>
-  <link rel="stylesheet" href="css/app.css"/>  
-</head>
-<body>
-  <div class="container" ng-controller="ListaController">
-  <h1>Lista Compras</h1>
-  <div class="main">
-    <ul class="unstyled">
-      <li ng-repeat="item in items">
-        <input type="checkbox" id="item-{{item.id}}" ng-model="item.comprado" ng-click="atualizarItem(item)">
-        <label for="item-{{item.id}}" class="{{foiComprado(item.comprado)}}">{{item.descItem}}<span></span></label>
-      </li>
-    </ul>
-    <form class="form-horizontal" ng-submit="adicionarItem()">
-      <input type="text" ng-model="itemAtual.descItem" placeholder="Descrição do Item">
-    </form>
-  </div>
- 
-  <div class="footer">
-    <button class="btn btn-large btn-danger" ng-click="limparComprado()">Remove Itens Comprados</button>
-  </div>
-</div>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, height=device-height,  initial-scale=1.0"/>
+        <title>Lista Compras</title>  
+        <link rel="stylesheet" href="css/bootstrap.css"/>
+        <link rel="stylesheet" href="css/app.css"/>  
+    </head>
+    <body>
+        <div class="container" ng-controller="ListaController">
+            <h1>Lista Compras Total: {{totalLista() | number:2}}</h1>
+            <div class="main">
+                <div>
+                    <label>Marcador: </label>
+                    <input type="text" ng-model="filtro" typeahead="tag for tag in tagsItems | filter:$viewValue | limitTo:8"/>
+                </div>
+                <ul class="unstyled">
+                    <li ng-repeat="item in (filtereditems = (items | filter:filtro))">
+                        <div style="display: inline-block; width: 100%">
+                            <div style="display: inline-block; width: 84%">
+                                <input type="checkbox" id="item-{{item.id}}" ng-model="item.comprado" ng-click="atualizarItem(item)">
+                                <label id="descItem-{{item.id}}" for="item-{{item.id}}" class="{{foiComprado(item.comprado)}}">{{item.descItem}} - R$ {{item.valorItem| number:2}}<span></span></label>                                                        
+                            </div>
+                            <button class="btn btn-info botao-foto" ng-click="mostraFoto(item)">Foto</button>                            
+                        </div>
+
+                    </li>
+                </ul>
+                <button class="btn btn-large btn-info" ng-click="adicionarItem()">Adicionar Item</button>
+                <br/>
+                <span style="font-weight: 300; font-size: 20px; line-height: 40px;">Marcadores: {{tagsItems.join(',')}}</span>
+            </div>
+
+            <div class="footer">
+                <button class="btn btn-large btn-danger" ng-click="limparComprado()">Remove Itens Comprados</button>
+            </div>
+        </div>
 
 
-  <!-- In production use:
-  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
-  -->
-  <script src="lib/angular/angular.js"></script>
-  <script src="lib/angular/angular-resource.js"></script>
-  <script src="lib/angular/angular-route.js"></script>
-  <script src="js/app.js"></script>
-  <script src="js/services.js"></script>
-  <script src="js/controllers.js"></script>
-  <script src="js/filters.js"></script>
-  <script src="js/directives.js"></script>
-  <script src="js/jquery-2.0.3.js"></script>
-  <script src="js/bootstrap.js"></script>
-  <script src="js/ui-bootstrap-0.9.0.js"></script>
-  <script src="js/ui-bootstrap-tpls-0.9.0.js"></script>  
-</body>
+        <!-- In production use:
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+        -->
+        <script src="lib/angular/angular.js"></script>
+        <script src="lib/angular/angular-resource.js"></script>
+        <script src="lib/angular/angular-route.js"></script>
+        <script src="js/app.js"></script>
+        <script src="js/services.js"></script>
+        <script src="js/controllers.js"></script>
+        <script src="js/filters.js"></script>
+        <script src="js/directives.js"></script>
+        <script src="js/jquery-2.0.3.js"></script>
+        <script src="js/bootstrap.js"></script>
+        <script src="js/ui-bootstrap-0.9.0.js"></script>
+        <script src="js/ui-bootstrap-tpls-0.9.0.js"></script>  
+    </body>
 </html>
