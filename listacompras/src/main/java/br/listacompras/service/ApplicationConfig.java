@@ -32,6 +32,8 @@ public class ApplicationConfig extends Application {
      * If required, comment out calling this method in getClasses().
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
+        resources.add(br.listacompras.service.CORSFilter.class);
+        resources.add(br.listacompras.service.ListaFacadeREST.class);
     }
     
 }

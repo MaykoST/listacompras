@@ -28,7 +28,7 @@ import javax.ws.rs.Produces;
 @Path("lista")
 public class ListaFacadeREST extends AbstractFacade<Lista> {
     @PersistenceContext(unitName = "br.listacompras_listacompras_war_1.0-SNAPSHOTPU")
-    private EntityManager em;
+    public EntityManager em;
 
     public ListaFacadeREST() {
         super(Lista.class);
