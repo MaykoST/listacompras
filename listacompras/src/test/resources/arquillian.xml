@@ -6,7 +6,7 @@
     <container default="true" qualifier="glassfish-embedded">
         <configuration>
             <property name="sunResourcesXml">src/main/setup/glassfish-resources.xml</property> 
-            <property name="port">8181</property>
+            <property name="bindHttpPort">8787</property>
         </configuration>
     </container>
 </arquillian>

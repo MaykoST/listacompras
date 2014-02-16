@@ -3,7 +3,7 @@
     <persistence-unit name="br.listacompras_listacompras_war_1.0-SNAPSHOTPU" transaction-type="JTA">                    
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <jta-data-source>listacompras</jta-data-source>
-        <class>br.listabr.listacompras.model.Lista</class>
+        <class>br.listacompras.model.Lista</class>
         <exclude-unlisted-classes>true</exclude-unlisted-classes>                        
         <properties>
             <property name="hibernate.show_sql" value="true" />

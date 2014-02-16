@@ -18,10 +18,10 @@ import javax.persistence.Lob;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlSchemaType;
 
 /**
  *
@@ -34,8 +34,7 @@ import javax.xml.bind.annotation.XmlSchemaType;
     @NamedQuery(name = "Lista.findAll", query = "SELECT l FROM Lista l"),
     @NamedQuery(name = "Lista.findById", query = "SELECT l FROM Lista l WHERE l.id = :id"),
     @NamedQuery(name = "Lista.findByDescItem", query = "SELECT l FROM Lista l WHERE l.descItem = :descItem"),
-    @NamedQuery(name = "Lista.findByUserId", query = "SELECT l FROM Lista l WHERE l.userId = :userId"),
-    @NamedQuery(name = "Lista.findByValorItem", query = "SELECT l FROM Lista l WHERE l.valorItem = :valorItem")})
+    @NamedQuery(name = "Lista.findByUserId", query = "SELECT l FROM Lista l WHERE l.userId = :userId")})
 public class Lista implements Serializable {
     @Column(name = "comprado")
     private Boolean comprado;
@@ -56,7 +55,7 @@ public class Lista implements Serializable {
     private String descItem;
     @Column(name = "user_id")
     private Integer userId;
-    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+    @Min(value=0)
     @Column(name = "valor_item")
     private BigDecimal valorItem;
     @Basic(optional = true)    

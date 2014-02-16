@@ -11,6 +11,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -62,6 +63,15 @@ public class ListaFacadeREST extends AbstractFacade<Lista> {
     @Produces({"application/xml", "application/json"})
     public Lista find(@PathParam("id") Integer id) {
         return super.find(id);
+    }
+    
+    @GET
+    @Path("descitem/{descitem}")
+    @Produces({"application/xml", "application/json"})
+    public List<Lista> findByDescItem(@PathParam("descitem") String descItem) {
+        Query q = getEntityManager().createNamedQuery("Lista.findByDescItem");
+        q.setParameter("descItem", descItem);                
+        return q.getResultList();
     }
 
     @GET
